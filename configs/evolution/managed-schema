@@ -15,6 +15,7 @@
   <fieldType name="text_basic" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer>
       <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.ASCIIFoldingFilterFactory" />
       <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
     </fieldType>
