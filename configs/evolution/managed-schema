@@ -25,4 +25,7 @@
     <field name="Age" type="pint" indexed="true" stored="true"/>
     <field name="Centimeters" type="pint" indexed="true" stored="true"/>
     <field name="Kilograms" type="pfloat" indexed="true" stored="true"/>
+
+    <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers" />
+    <field name="location" type="location_rpt" indexed="true" stored="true" />
 </schema>
