@@ -9,4 +9,14 @@
     </lst>
   </requestHandler>
 
+  <requestHandler name="/namesearch" class="solr.SearchHandler">
+    <lst name="defaults">
+        <str name="df">_text_</str>
+        <str name="echoParams">all</str>
+        <str name="defType">edismax</str>
+        <str name="qf">GivenName_exact^15 GivenName^10 GivenName_ph^5 _text_</str>
+        <str name="fl">GivenName Surname Company StreetAddress City CountryFull</str>
+    </lst>
+  </requestHandler>
+
 </config>
