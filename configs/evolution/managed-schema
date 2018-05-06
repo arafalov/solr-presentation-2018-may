@@ -46,4 +46,28 @@
 
     <field name="TelephoneNumber" type="phone" indexed="true" stored="true" />
 
+    <fieldType name="text_exact" class="solr.SortableTextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_phonetic" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+      </analyzer>
+    </fieldType>
+
+    <field name="GivenName_exact" type="text_exact" indexed="true" stored="false"/>
+    <field name="Surname_exact" type="text_exact" indexed="true" stored="false"/>
+    <field name="GivenName_ph" type="text_phonetic" indexed="true" stored="false"/>
+    <field name="Surname_ph" type="text_phonetic" indexed="true" stored="false"/>
+
+    <copyField source="GivenName" dest="GivenName_exact"/>
+    <copyField source="GivenName" dest="GivenName_ph"/>
+    <copyField source="Surname" dest="Surname_exact"/>
+    <copyField source="Surname" dest="Surname_ph"/>
+
 </schema>
