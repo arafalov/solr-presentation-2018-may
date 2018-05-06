@@ -18,4 +18,11 @@
       <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
     </fieldType>
+
+    <fieldType name="pint" class="solr.IntPointField" docValues="true"/>
+    <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
+
+    <field name="Age" type="pint" indexed="true" stored="true"/>
+    <field name="Centimeters" type="pint" indexed="true" stored="true"/>
+    <field name="Kilograms" type="pfloat" indexed="true" stored="true"/>
 </schema>
