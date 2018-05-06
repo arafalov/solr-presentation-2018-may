@@ -28,4 +28,21 @@
 
     <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers" />
     <field name="location" type="location_rpt" indexed="true" stored="true" />
+
+    <fieldType name="phone" class="solr.TextField">
+      <analyzer type="index">
+        <tokenizer class="solr.KeywordTokenizerFactory" />
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^0-9])" replacement="" replace="all"/>
+        <filter class="solr.ReverseStringFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="30"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory" />
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^0-9])" replacement="" replace="all"/>
+        <filter class="solr.ReverseStringFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <field name="TelephoneNumber" type="phone" indexed="true" stored="true" />
+
 </schema>
