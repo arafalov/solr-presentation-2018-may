@@ -2,6 +2,9 @@
 <config>
   <luceneMatchVersion>7.3.0</luceneMatchVersion>
 
+  <lib path="../../../contrib/analysis-extras/lucene-libs/lucene-analyzers-icu-7.3.0.jar" />
+  <lib path="../../../contrib/analysis-extras/lib/icu4j-59.1.jar" />
+
   <requestHandler name="/select" class="solr.SearchHandler">
     <lst name="defaults">
         <str name="df">_text_</str> 

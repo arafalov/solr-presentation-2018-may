@@ -70,4 +70,20 @@
     <copyField source="Surname" dest="Surname_exact"/>
     <copyField source="Surname" dest="Surname_ph"/>
 
+    <fieldType name="text_ru_en" class="solr.TextField">
+      <analyzer type="index">
+        <tokenizer class="solr.ICUTokenizerFactory"/>
+        <filter class="solr.ICUTransformFilterFactory" id="ru-en" />
+        <filter class="solr.BeiderMorseFilterFactory" />
+      </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory" />
+        <filter class="solr.LowerCaseFilterFactory" />
+        <filter class="solr.BeiderMorseFilterFactory" />
+      </analyzer>
+    </fieldType>
+
+    <field name="GivenName_ruen" type="text_ru_en" indexed="true" stored="false"/>
+    <copyField source="GivenName" dest="GivenName_ruen"/>
+
 </schema>
